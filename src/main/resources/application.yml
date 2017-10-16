@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: SpringBoot-Jersey
+
+server:
+  port: 8080
+
+swagger:
+  title: API文档
+  version: 1.0
+  contact: Aaron
+  basePath: /api
+  resourcePackege: com.aaron.api
