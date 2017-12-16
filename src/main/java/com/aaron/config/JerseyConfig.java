@@ -39,6 +39,7 @@ public class JerseyConfig extends ResourceConfig implements ApplicationContextAw
     public void afterPropertiesSet() throws Exception {
         register(BadRequestExceptionMapper.class);
         register(NotFoundExceptionMapper.class);
+        register(MultiPartFeature.class);
         Map<String, Object> resources = applicationContext.getBeansWithAnnotation(RestResource.class);
         for (Object object : resources.values()) {
             register(object);

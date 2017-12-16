@@ -18,7 +18,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>${spring.boot.version}</version>
+        <version>1.5.9.RELEASE</version>
     </parent>
 
     <dependencies>
@@ -59,18 +59,6 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-jersey2-jaxrs</artifactId>
             <version>1.5.12</version>
-        </dependency>
-
-        <!-- swagger 静态资源 -->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>swagger-ui</artifactId>
-            <version>2.2.10</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.hk2</groupId>
-            <artifactId>spring-bridge</artifactId>
-            <version>2.5.0-b34</version>
         </dependency>
 
         <dependency>
