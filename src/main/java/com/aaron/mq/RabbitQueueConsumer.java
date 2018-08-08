@@ -4,6 +4,9 @@ import com.aaron.api.pojo.Message;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.annotation.Exchange;
+import org.springframework.amqp.rabbit.annotation.Queue;
+import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,7 +22,24 @@ public class RabbitQueueConsumer {
     private ObjectMapper objectMapper;
 
     @RabbitListener(queues = "hello")
-    public void consume(Message message) {
+    public void consumeQueue(Message message) {
+        try {
+            System.out.println(objectMapper.writeValueAsString(message));
+        } catch (Throwable t) {
+            logger.error("consume", t);
+        }
+    }
+
+    @RabbitListener(
+            bindings = {
+                    @QueueBinding(
+                            value = @Queue(value = "welcome",durable = "true"),
+                            exchange = @Exchange(value = "welcome.exchange",durable = "true"),
+                            key = "welcome"
+                    )
+            }
+    )
+    public void consumeExchange(Message message) {
         try {
             System.out.println(objectMapper.writeValueAsString(message));
         } catch (Throwable t) {
